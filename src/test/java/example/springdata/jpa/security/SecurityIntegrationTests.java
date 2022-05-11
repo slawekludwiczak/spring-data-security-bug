@@ -42,7 +42,7 @@ class SecurityIntegrationTests {
 	@BeforeEach
 	void setup() {
 		User joe = userRepository.save(new User("joe", "{noop}joepass"));
-		joeAuth = new UsernamePasswordAuthenticationToken(joe, "x", singleton(new SimpleGrantedAuthority("ROLE_ADMIN")));
+		joeAuth = new UsernamePasswordAuthenticationToken(joe.getUsername(), "", singleton(new SimpleGrantedAuthority("ROLE_ADMIN")));
 		SecurityContextHolder.getContext().setAuthentication(joeAuth);
 	}
 
